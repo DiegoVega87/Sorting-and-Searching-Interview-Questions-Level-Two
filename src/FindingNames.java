@@ -46,19 +46,20 @@ public class FindingNames {
         }
         boolean[] used = new boolean[chars.length];
         String permutation = "";
-        result = backtrack(result, chars,permutation , used);
+        backtrack(result, chars,permutation , used);
 
         return result;
     }
 
-    private static List<String> backtrack(List<String> result,char[] elements,
+    private static void backtrack(List<String> result,char[] elements,
                                           String permutation, boolean[] used){
 
-        if(permutation.length() == elements.length){
+        if(permutation.length() == elements.length){ // Goal is reached
             result.add(permutation);
+            return;
         }
 
-        for(int i = 0; i < elements.length; i++){
+        for(int i = 0; i < elements.length; i++){ // Go through the chars and build a permutation
             if(!used[i]){   // Valid choice
                 //Make a choice
                 used[i] = true;
@@ -66,12 +67,10 @@ public class FindingNames {
                 backtrack(result, elements, permutation, used);
                 //undo the choice
                 used[i] = false;
-                permutation = permutation.substring(0, permutation.length()-1);
-
+                permutation = permutation.substring(0, permutation.length()-1); // Remove the last character
             }
         }
 
-        return result;
     }
 
 }
