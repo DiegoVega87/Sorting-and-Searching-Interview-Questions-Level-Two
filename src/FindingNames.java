@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class FindingNames {
 
     /*
@@ -17,4 +21,41 @@ public class FindingNames {
     *  3214, 3241, 3412, 3421, 4123, 4132, 4213, 4231, 4312, 4321]
     *
     * */
+
+    public static List<String> generateProductNames(char[] chars){
+
+        List<String> result = new ArrayList<>();
+        if(chars == null || chars.length < 1){
+            return result;
+        }
+        boolean[] used = new boolean[chars.length];
+        String permutation = "";
+        result = backtrack(result, chars,permutation , used);
+
+        return result;
+    }
+
+    private static List<String> backtrack(List<String> result,char[] elements,
+                                          String permutation, boolean[] used){
+
+        if(permutation.length() == elements.length){
+            result.add(permutation);
+        }
+
+        for(int i = 0; i < elements.length; i++){
+            if(!used[i]){   // Valid choice
+                //Make a choice
+                used[i] = true;
+                permutation+=elements[i];
+                backtrack(result, elements, permutation, used);
+                //undo the choice
+                used[i] = false;
+                permutation = permutation.substring(0, permutation.length()-1);
+
+            }
+        }
+
+        return result;
+    }
+
 }
