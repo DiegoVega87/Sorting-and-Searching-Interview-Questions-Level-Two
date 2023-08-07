@@ -22,6 +22,22 @@ public class FindingNames {
     *
     * */
 
+    public static void main(String[] args){
+        char[] chars = {'a', 'b', 'c'};
+        System.out.println(generateProductNames(chars));
+
+        chars = new char[]{};
+        System.out.println(generateProductNames(chars));
+
+        chars = null;
+        System.out.println(generateProductNames(chars));
+
+        chars = new char[]{'1', '2', '3', '4'};
+        System.out.println(generateProductNames(chars));
+
+
+    }
+
     public static List<String> generateProductNames(char[] chars){
 
         List<String> result = new ArrayList<>();
