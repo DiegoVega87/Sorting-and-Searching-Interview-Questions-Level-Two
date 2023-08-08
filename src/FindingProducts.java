@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Map;
+
 public class FindingProducts {
 
     /*
@@ -21,5 +26,30 @@ public class FindingProducts {
     *
     * */
 
+
+    public static List<List<Integer>> generateSubsets(int[] products){
+        int n = products.length;
+        List<List<Integer>> result = new ArrayList<>();
+        for(int k = 0; k <= n; k++){
+            backtrack(0,new ArrayList<>(),products, n, k, result);
+        }
+
+        return result;
+    }
+
+    private static void backtrack(int first, List<Integer> current,int[] nums,
+                                  int n, int k, List<List<Integer>> answer){
+
+        if(current.size() == k){
+            answer.add(new ArrayList<>(current));
+            return;
+        }
+
+        for(int i = first; i < n; i++){
+            current.add(nums[i]);
+            backtrack(i+1, current,nums,n, k, answer);
+            current.remove(current.size()-1);
+        }
+    }
 
 }
