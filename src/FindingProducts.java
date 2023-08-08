@@ -26,6 +26,17 @@ public class FindingProducts {
     *
     * */
 
+    public static void main(String[] args){
+
+        int[] products = {1,2,3};
+        List<List<Integer>> subsets = generateSubsets(products);
+        System.out.println(subsets);
+
+
+        products = new int[]{4, 5, 6, 7};
+        subsets = generateSubsets(products);
+        System.out.println(subsets);
+    }
 
     public static List<List<Integer>> generateSubsets(int[] products){
         int n = products.length;
