@@ -24,7 +24,18 @@ public class MostSoldProducts {
     *
     * */
 
+    public static void main(String[] args){
+        int[] products = {1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 1};
+        int k = 3;
+        List<Integer> result = topKFrequent(products, k);
+        System.out.println(result);
 
+        products = new int[]{1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 1};
+        k = 3;
+        result = topKFrequent(products, k);
+        System.out.println(result);
+
+    }
 
     public static List<Integer> topKFrequent(int[] products, int k){
         List<Integer> topFrequent = new ArrayList<>();
