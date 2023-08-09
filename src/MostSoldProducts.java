@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class MostSoldProducts {
 
     /*
@@ -21,4 +23,54 @@ public class MostSoldProducts {
     *
     *
     * */
+
+
+
+    public static List<Integer> topKFrequent(int[] products, int k){
+        List<Integer> topFrequent = new ArrayList<>();
+        if(products == null || k < 1 || k > products.length){
+            return topFrequent;
+        }
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int product : products) {
+            int frequency = map.getOrDefault(product, 0);
+            map.put(product, frequency + 1);
+        }
+
+        List<Map.Entry<Integer, Integer>> listOfEntries = getEntries(map);
+        System.out.println(listOfEntries);
+
+       for(Map.Entry<Integer, Integer> entry : listOfEntries){
+           topFrequent.add(entry.getKey());
+           k--;
+           if(k < 1){
+               break;
+           }
+       }
+
+
+        return topFrequent;
+    }
+
+    private static List<Map.Entry<Integer, Integer>> getEntries(Map<Integer, Integer> map) {
+        Set<Map.Entry<Integer, Integer>> entries = map.entrySet();
+
+        Comparator<Map.Entry<Integer, Integer>> valueComparator =
+                new Comparator<Map.Entry<Integer, Integer>>() {
+                    @Override
+                    public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
+                        Integer v1 = o1.getValue();
+                        Integer v2 = o2.getValue();
+                        return v2.compareTo(v1);
+                    }
+                };
+
+        List<Map.Entry<Integer,Integer>> listOfEntries =
+                new ArrayList<>(entries);
+
+        listOfEntries.sort(valueComparator );
+        return listOfEntries;
+    }
+
 }
