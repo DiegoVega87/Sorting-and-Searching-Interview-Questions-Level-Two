@@ -28,12 +28,18 @@ public class MostSoldProducts {
         int[] products = {1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 1};
         int k = 3;
         List<Integer> result = topKFrequent(products, k);
-        System.out.println(result);
+        System.out.println("Result: " + result);
+        result = topKFrequentV2(products, k);
+        System.out.println("ResultV2: " + result);
+
+
 
         products = new int[]{1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 1};
         k = 3;
         result = topKFrequent(products, k);
-        System.out.println(result);
+        System.out.println("Result: " + result);
+        result = topKFrequentV2(products, k);
+        System.out.println("ResultV2: " + result);
 
     }
 
@@ -50,7 +56,6 @@ public class MostSoldProducts {
         }
 
         List<Map.Entry<Integer, Integer>> listOfEntries = getEntries(map);
-        System.out.println(listOfEntries);
 
        for(Map.Entry<Integer, Integer> entry : listOfEntries){
            topFrequent.add(entry.getKey());
@@ -95,15 +100,15 @@ public class MostSoldProducts {
         Map<Integer, Integer> map = new HashMap<>();
 
         for(int i : products){
-            int frequency = map.getOrDefault(products[i], 0);
-            map.put(products[i], frequency + 1);
+            int frequency = map.getOrDefault(i, 0);
+            map.put(i, frequency + 1);
         }
 
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>((a, b)-> map.get(b) - map.get(a));
         priorityQueue.addAll(map.keySet());
 
         for(int i = 0; i < k; i++){
-            topKProducts.add(priorityQueue.remove());
+            topKProducts.add(priorityQueue.poll());
         }
 
         return topKProducts;
