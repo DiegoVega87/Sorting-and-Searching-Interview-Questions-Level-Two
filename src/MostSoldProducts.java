@@ -84,4 +84,28 @@ public class MostSoldProducts {
         return listOfEntries;
     }
 
+    public static List<Integer> topKFrequentV2(int[] products, int k){
+
+        List<Integer> topKProducts = new ArrayList<>();
+
+        if( products == null ||  products.length == 0 || k < 1 || k > products.length){
+            return topKProducts;
+        }
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for(int i : products){
+            int frequency = map.getOrDefault(products[i], 0);
+            map.put(products[i], frequency + 1);
+        }
+
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>((a, b)-> map.get(b) - map.get(a));
+        priorityQueue.addAll(map.keySet());
+
+        for(int i = 0; i < k; i++){
+            topKProducts.add(priorityQueue.remove());
+        }
+
+        return topKProducts;
+    }
 }
