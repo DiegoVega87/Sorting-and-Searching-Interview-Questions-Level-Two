@@ -21,7 +21,19 @@ public class RangeFinder {
     *
     * */
 
+    public static void main(String[] args){
+        int[] purchases = {10, 20, 35, 40, 50};
+        int targetAmount = 30;
+        System.out.println(Arrays.toString(findPurchaseAmount(purchases,targetAmount)));
 
+        purchases = new int[]{5, 10, 15, 22, 25, 30, 35};
+        targetAmount = 25;
+        System.out.println(Arrays.toString(findPurchaseAmount(purchases,targetAmount)));
+
+        purchases = new int[]{5, 10, 15, 22, 25, 30, 35};
+        targetAmount = 15;
+        System.out.println(Arrays.toString(findPurchaseAmount(purchases,targetAmount)));
+    }
 
     public static int[] findPurchaseAmount(int[] purchases, int targetAmount){
 
