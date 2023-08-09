@@ -25,6 +25,23 @@ public class FindingBestSalesDays {
     *
     *
     * */
+    public static void main(String[] args){
+        int[] sales_data = {1, 2, 3, 4, 5, 4, 6, 2, 1};
+        List<Integer> actualOutput = findPeakElements(sales_data);
+        System.out.println(actualOutput);
+
+        sales_data = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        actualOutput = findPeakElements(sales_data);
+        System.out.println(actualOutput);
+
+        sales_data = new int[]{1, 2, 3, 4, 5, 4, 3, 2, 1};
+        actualOutput = findPeakElements(sales_data);
+        System.out.println(actualOutput);
+        sales_data = new int[]{};
+        actualOutput = findPeakElements(sales_data);
+        System.out.println(actualOutput);
+
+    }
 
     public static List<Integer> findPeakElements(int[] sales_data){
 
