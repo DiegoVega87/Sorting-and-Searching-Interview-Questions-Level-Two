@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class FindingBestSalesDays {
 
     /*
@@ -23,5 +26,32 @@ public class FindingBestSalesDays {
     *
     * */
 
+    public static List<Integer> findPeakElements(int[] sales_data){
 
+        List<Integer> peakElements = new ArrayList<>();
+        if(sales_data == null || sales_data.length < 3){
+            return peakElements;
+        }
+
+        int a = 0;
+        int b = 1;
+        int c = 2;
+
+        while(c < sales_data.length){
+
+            if(sales_data[b] > sales_data[a] && sales_data[b] > sales_data[c]){
+                peakElements.add(b);
+                a = c;
+                b = a+1;
+                c = b+1;
+            }else {
+                a++;
+                b++;
+                c++;
+            }
+
+        }
+
+        return peakElements;
+    }
 }
