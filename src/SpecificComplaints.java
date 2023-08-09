@@ -22,6 +22,18 @@ public class SpecificComplaints {
     * // result should be 1
     * */
 
+    public static void main(String[] args){
+        int[] complaints = {2, 3, 4, 4, 4, 5, 5, 6, 6, 6, 6};
+        int k = 2;
+        int result = kthLargestFrequency(complaints, k);
+        System.out.println(result);
+
+
+        complaints =new int[]{1, 1, 1, 2, 2, 3};
+        k = 1;
+        result = kthLargestFrequency(complaints, k);
+        System.out.println(result);
+    }
     public static int kthLargestFrequency(int[] numbers, int k){
 
         if(numbers == null || numbers.length < 1 || k < 1 || k > numbers.length){
