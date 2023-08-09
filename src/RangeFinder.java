@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class RangeFinder {
 
     /*
@@ -18,4 +20,35 @@ public class RangeFinder {
     *
     *
     * */
+
+
+
+    public static int[] findPurchaseAmount(int[] purchases, int targetAmount){
+
+        int[] indexes = {-1,-1};
+
+        if(purchases == null || purchases.length < 1){
+            return indexes;
+        }
+
+        int start = 0;
+        int end = purchases.length -1;
+
+        while(start < end){
+
+            int sum = purchases[start] + purchases[end];
+
+            if(sum == targetAmount){
+                indexes[0] = start;
+                indexes[1] = end;
+                return indexes;
+            }else if(sum < targetAmount){
+                start++;
+            }else{
+                end--;
+            }
+        }
+
+        return indexes;
+    }
 }
