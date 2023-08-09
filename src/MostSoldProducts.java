@@ -78,7 +78,7 @@ public class MostSoldProducts {
                     public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
                         Integer v1 = o1.getValue();
                         Integer v2 = o2.getValue();
-                        return v2.compareTo(v1);
+                        return v2 - v1;
                     }
                 };
 
@@ -104,6 +104,7 @@ public class MostSoldProducts {
             map.put(i, frequency + 1);
         }
 
+        //Create a priority queue to store the top K frequent products
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>((a, b)-> map.get(b) - map.get(a));
         priorityQueue.addAll(map.keySet());
 
