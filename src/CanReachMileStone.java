@@ -21,6 +21,46 @@ public class CanReachMileStone {
     *
     * */
 
+    public static void main(String[] args){
+
+        int[] milestones = {2, 3, 1, 1, 4};
+        boolean result = canReachMilestone(milestones);
+        System.out.println(result);
+
+        milestones = new int[]{3, 2, 1, 0, 4};
+        result = canReachMilestone(milestones);
+        System.out.println(result);
+
+        milestones = new int[]{0, 0, 0, 0, 0};
+        result = canReachMilestone(milestones);
+        System.out.println(result);
+
+        milestones = new int[]{1, 1, 1, 1, 1};
+        result = canReachMilestone(milestones);
+        System.out.println(result);
+
+        milestones = new int[]{5};
+        result = canReachMilestone(milestones);
+        System.out.println(result);
+
+        milestones = new int[]{1, 2, 0, 0, 10};
+        result = canReachMilestone(milestones);
+        System.out.println("False --> "+result);
+
+        milestones = new int[]{1, 2, 0, 1, 10};
+        result = canReachMilestone(milestones);
+        System.out.println("True --> "+result);
+
+        milestones = new int[]{3, 2, 1, 0, 4};
+        result = canReachMilestone(milestones);
+        System.out.println(result);
+
+        milestones = new int[]{2, 3, 1, 1, 4};
+        result = canReachMilestone(milestones);
+        System.out.println(result);
+
+    }
+
     public static boolean canReachMilestone(int[] milestones){
 
         int maxProgress = 0;
@@ -32,7 +72,7 @@ public class CanReachMileStone {
 
             maxProgress = Math.max(maxProgress, i + milestones[i]);
         }
-
+        System.out.println(maxProgress);
         return true;
     }
 }
