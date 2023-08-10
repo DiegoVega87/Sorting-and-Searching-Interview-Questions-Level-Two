@@ -8,6 +8,31 @@ public class CanReachMileStone {
     * through each element in the array, checking if it's possible to reach the next milestone. If you can't reach a
     * milestone with any combination of progress values, return false.
     *
+    * Example 1:
+    * int[] milestones = {2, 3, 1, 1, 4};
+    * boolean result = canReachMilestone(milestones);
+    * result should be true
+    *
+    * Example 2:
+    * int[] milestones = {3, 2, 1, 0, 4};
+    * boolean result = canReachMilestone(milestones);
+    * result should be false
+    *
     *
     * */
+
+    public static boolean canReachMilestone(int[] milestones){
+
+        int maxProgress = 0;
+
+        for(int i = 0; i < milestones.length; i++){
+            if(i > maxProgress){
+                return false;
+            }
+
+            maxProgress = Math.max(maxProgress, i + milestones[i]);
+        }
+
+        return true;
+    }
 }
